@@ -1,5 +1,10 @@
 package br.ucs.poo.rederevenda.sistema;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,6 +156,64 @@ public class Sistema implements Serializable {
 		}
 		System.out.println("Revenda não encontrada");
 		return -1;
+	}
+	
+	public void gravarArquivo() {
+		try {
+			FileOutputStream fo = new FileOutputStream("revendas.dat");
+			ObjectOutputStream ou = new ObjectOutputStream(fo);
+			ou.writeObject(revendas);
+			ou.close();
+			fo.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			FileOutputStream fo = new FileOutputStream("marcas.dat");
+			ObjectOutputStream ou = new ObjectOutputStream(fo);
+			ou.writeObject(marcas);
+			ou.close();
+			fo.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void lerArquivo() {
+		File f = new File("revendas.dat");
+		
+		if (f.exists()) {
+			try {
+				FileInputStream fi = new FileInputStream(f);
+				ObjectInputStream oi = new ObjectInputStream(fi);
+				Object o = oi.readObject();
+				revendas = (List<Revenda>) o;
+				oi.close();
+				fi.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		File f1 = new File("marcas.dat");
+		
+		if (f1.exists()) {
+			try {
+				FileInputStream fi = new FileInputStream(f1);
+				ObjectInputStream oi = new ObjectInputStream(fi);
+				Object o = oi.readObject();
+				marcas = (List<Marca>) o;
+				oi.close();
+				fi.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }

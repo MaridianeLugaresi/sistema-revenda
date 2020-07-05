@@ -13,6 +13,7 @@ public class Main implements Serializable {
 		Sistema sistema = new Sistema(); 
 		Scanner in = new Scanner(System.in);
 		int opcao = 0;
+		sistema.lerArquivo();
 		
 		do {
 			mostraMenuPrincipal();
@@ -43,6 +44,9 @@ public class Main implements Serializable {
 		
 		in.close();
 		System.out.println("Você saiu do sistema!");
+		
+		//APÓS SAIR DO SISTEMA GRAVA NO ARQUIVO O ESTADO ATUAL DOS REGISTROS
+		sistema.gravarArquivo();
 	
 	}
 
