@@ -19,7 +19,7 @@ public class Sistema implements Serializable {
 	
 	public void adicionarRevenda(Revenda revenda) {
 		if(revendas.contains(revenda)){
-			System.out.println("\nA revenda informada já existe! Nenhuma operação foi realizada");
+			System.out.println("\nA revenda informada já existe! Nenhuma operação foi realizada.");
 			return;
 		}
 		revendas.add(revenda);
@@ -50,7 +50,6 @@ public class Sistema implements Serializable {
 			}
 		}
 		return null;
-		//TODO: IMPLEMENTAR UM EXECPTION DE REVENDA NÃO ENCONTRADA
 	}
 	
 	public void pesquisarCodigo(int codigo) {
@@ -79,6 +78,8 @@ public class Sistema implements Serializable {
 	
 	public void listarTodosVeiculosTodasRevendas() {
 		for (Revenda rev : revendas) {
+			System.out.println("-------------------------------------------------------------------------------------------------------------------");
+			System.out.println("REVENDA");
 			System.out.println(rev.toString());
 			System.out.println("\nCARROS");
 			for (Carro carro : rev.carros) {
@@ -88,12 +89,13 @@ public class Sistema implements Serializable {
 			for (Caminhao caminhao : rev.caminhoes) {
 				System.out.println(caminhao.toString());
 			}
+			System.out.println("-------------------------------------------------------------------------------------------------------------------\n");
 		}
 	}
 	
 	public void adicionarMarca(Marca marca) {
 		if(marcas.contains(marca)) {
-			System.out.println("A marca informada já esta registrada no sistema!");
+			System.out.println("A marca informada já esta registrada no sistema! Nenhuma operação foi realizada.");
 			return;
 		}
 		marcas.add(marca);
@@ -145,7 +147,6 @@ public class Sistema implements Serializable {
 			}
 		}
 		return null;
-		//TODO: IMPLEMENTAR EXCEPTION
 	}
 	
 	public int retornarRevendaAtual(int codigo) {

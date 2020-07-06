@@ -107,9 +107,13 @@ public class Main implements Serializable {
 				sistema.adicionarRevenda(rev);
 				break;
 				
-			case 2: //PRINTAR DO LADO OS NOVOS ATUAIS, SE DER ENTER NÃO ALTERA
+			case 2:
 				System.out.println("Informe o código da revenda a ser alterada:");			
 				rev = sistema.buscarRevenda(in.nextInt());
+				if (rev == null) {
+					System.out.println("\nO código da revenda informado não foi encontrado!\n");
+					break;
+				}
 				
 				System.out.println("Agora informe os novos dados da revenda:");
 				in.nextLine();
@@ -125,6 +129,9 @@ public class Main implements Serializable {
 			case 3:
 				System.out.println("Informe o código da revenda a ser excluída:");
 				rev = sistema.buscarRevenda(in.nextInt());
+				if (rev == null) {
+					System.out.println("\nO código da revenda informado não foi encontrado!\n");
+				}
 				sistema.excluirRevenda(rev);
 				break;
 				
@@ -147,7 +154,11 @@ public class Main implements Serializable {
 				sistema.listarTodosVeiculosTodasRevendas();
 				break;
 				
+			case 8:
+				break;
+				
 			default :
+				in.nextLine();
 				break;
 			}
 
@@ -201,6 +212,10 @@ public class Main implements Serializable {
 			case 2:
 				System.out.println("Informe o código da Marca a ser alterada: ");
 				marca = sistema.buscarMarca(in.nextInt());
+				if (marca == null) {
+					System.out.println("\n O código da marca informado não foi encontrado!\n");
+					break;
+				}
 				
 				System.out.println("Agora informe os novos dados da Marca: ");
 				System.out.println("Nome: ");
@@ -213,6 +228,10 @@ public class Main implements Serializable {
 			case 3:
 				System.out.println("Informe o código da Marca a ser excluída: ");
 				marca = sistema.buscarMarca(in.nextInt());
+				if (marca == null) {
+					System.out.println("\n O código da marca informado não foi encontrado!\n");
+					break;
+				}
 				sistema.excluirMarca(marca);
 				break;
 				
@@ -230,7 +249,11 @@ public class Main implements Serializable {
 				sistema.listarTodasMarcas();
 				break;
 				
+			case 7:
+				break;
+				
 			default :
+				in.nextLine();
 				break;
 			}
 
@@ -265,6 +288,10 @@ public class Main implements Serializable {
 		
 		System.out.println("\nInforme o código da revenda que deseja fazer manutenção: ");
 		revendaAtual = sistema.buscarRevenda(in.nextInt());
+		if (revendaAtual == null) {
+			System.out.println("\nO código da revenda informado não foi encontrado!\n");
+			return;			
+		}
 		
 		do {
 			Carro carro = new Carro();
@@ -365,6 +392,10 @@ public class Main implements Serializable {
 					in.nextLine();
 					System.out.println("Informe a placa do Carro: ");
 					carro = revendaAtual.buscarCarro(in.nextLine());
+					if (carro == null) {
+						System.out.println("\n A placa do veículo informada não foi encontrada!\n");
+						break;
+					}
 					
 					System.out.println("Informe os novos dados para o Carro: ");
 					System.out.println("Nome: ");
@@ -395,12 +426,20 @@ public class Main implements Serializable {
 					System.out.println("Escolha a marca do carro pelo código. Opções: ");
 					sistema.listarTodasMarcas();
 					carro.setMarca(sistema.buscarMarca(in.nextInt()));
+					if (carro.getMarca() == null) {
+						System.out.println("\n O código da marca informado não foi encontrado!\n");
+						break;
+					}
 					revendaAtual.alterarCarro(carro);
 				}
 				if (tipoVeiculo == 2) {
 					in.nextLine();
 					System.out.println("Informe a placa do Caminhão: ");
 					caminhao = revendaAtual.buscarCaminhao(in.nextLine());
+					if (caminhao == null) {
+						System.out.println("\n A placa do veículo informada não foi encontrada!\n");
+						break;
+					}
 					
 					System.out.println("Informe os novos dados para o Caminhão: ");
 					System.out.println("Nome: ");
@@ -431,6 +470,10 @@ public class Main implements Serializable {
 					System.out.println("Escolha a marca do caminhão pelo código. Opções: ");
 					sistema.listarTodasMarcas();
 					caminhao.setMarca(sistema.buscarMarca(in.nextInt()));
+					if (caminhao.getMarca() == null) {
+						System.out.println("\n O código da marca informado não foi encontrado!\n");
+						break;
+					}
 					revendaAtual.alterarCaminhao(caminhao);
 				}
 				break;
@@ -474,7 +517,11 @@ public class Main implements Serializable {
 				revendaAtual.listarTodosVeiculos();
 				break;
 				
+			case 10:
+				break;
+				
 			default :
+				in.nextLine();
 				break;
 			}
 

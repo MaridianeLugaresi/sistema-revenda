@@ -11,7 +11,7 @@ public class Veiculo implements Serializable {
 	private double preco;
 	private int ano;
 	private String cor;
-	private boolean importado; //setar 0 e 1 para não dar problema
+	private boolean importado; //setar 0 e 1 para não dar problema entre SO
 	private Marca marca;
 	
 	

@@ -55,8 +55,6 @@ public class Marca implements Serializable  {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + codigo;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((paisOrigem == null) ? 0 : paisOrigem.hashCode());
 		return result;
 	}
 
@@ -71,17 +69,7 @@ public class Marca implements Serializable  {
 		Marca other = (Marca) obj;
 		if (codigo != other.codigo)
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (paisOrigem == null) {
-			if (other.paisOrigem != null)
-				return false;
-		} else if (!paisOrigem.equals(other.paisOrigem))
-			return false;
 		return true;
 	}
-	
+
 }

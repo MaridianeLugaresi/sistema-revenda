@@ -7,7 +7,7 @@ public class Carro extends Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int portas;
-	private boolean automatico; //setar 0 e 1 para não dar problema
+	private boolean automatico; //setar 0 e 1 para não dar problema entre SO
 
 	public int getPortas() {
 		return portas;
@@ -24,8 +24,8 @@ public class Carro extends Veiculo implements Serializable {
 	@Override
 	public String toString() {
 		return "Nome: " + getNome() + ", Placa: " + getPlaca() + ", Preco: " + getPreco() + ", Ano: " + getAno() + 
-				", Cor: " + getCor() + ", Importado: " + isImportado() + ", Marca: " + getMarca().getNome() + ", Portas: " + 
-				portas + ", Automatico: " + automatico;
+				", Cor: " + getCor() + ", Importado: " + (isImportado() ? "Sim" : "Não") + ", Marca: " + getMarca().getNome() + ", Portas: " + 
+				portas + ", Automatico: " + (automatico ? "Sim" : "Não");
 	}
 	
 	
